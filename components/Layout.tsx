@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react'
-import Link from 'next/link'
 import Head from 'next/head'
 
 type Props = {
@@ -8,32 +7,20 @@ type Props = {
 }
 
 const Layout = ({ children, title = 'This is the default title' }: Props) => (
-  <div>
+  <div className="flex flex-col h-screen">
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
-    <header>
-      <nav>
-        <Link href="/">
-          <a>Home</a>
-        </Link>{' '}
-        |{' '}
-        <Link href="/about">
-          <a>About</a>
-        </Link>{' '}
-        |{' '}
-        <Link href="/users">
-          <a>Users List</a>
-        </Link>{' '}
-        | <a href="/api/users">Users API</a>
-      </nav>
+    <header className="flex justify-center h-16">
+      
     </header>
-    {children}
-    <footer>
-      <hr />
-      <span>I'm here to stay (Footer)</span>
+    <div className="flex-grow mx-8 md:mx-24 xl:mx-60">
+      {children}
+    </div>
+    <footer className="flex justify-center h-16">
+      <span>By <a href="https://www.thepaulcushing.com">Paul Cushing</a></span>
     </footer>
   </div>
 )
