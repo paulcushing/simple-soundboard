@@ -33,7 +33,7 @@ function playSound(audio) {
 }
 
 const IndexPage = () => (
-  <Layout title="Paul's Component Library">
+  <Layout title="Paul's Soundboard">
     <h1>Welcome to Paul's Soundboard! 👋</h1>
     {process.browser ? 
     sounds.map((sound) => {
