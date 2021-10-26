@@ -1,4 +1,5 @@
 import Layout from '../components/Layout'
+import Image from 'next/image'
 
 const sounds = [
   {
@@ -12,15 +13,15 @@ const sounds = [
     audio : null
   },
   {
+    name : 'Power Up',
+    file : "/sounds/powerup.mp3",
+    audio : null
+  },
+  {
     name : 'Game Over',
     file : "/sounds/gameover.mp3",
     audio : null
   },
-  {
-    name : 'Power Up',
-    file : "/sounds/powerup.mp3",
-    audio : null
-  }
 ];
 
 function playSound(audio) {
@@ -34,6 +35,12 @@ function playSound(audio) {
 
 const IndexPage = () => (
   <Layout title="Paul's Soundboard">
+
+    <div className="flex justify-center">
+      <div className="w-24">
+      <Image src="/android-chrome-512x512.png" alt="Speaker Icon" sizes="10vw" width={100} height={100} />
+    </div>
+    </div>
     <h1 className="text-center text-2xl">Welcome to Paul's Soundboard! 👋</h1>
     {process.browser ? 
     sounds.map((sound) => {
