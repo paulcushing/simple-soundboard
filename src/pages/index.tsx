@@ -34,7 +34,7 @@ function playSound(audio) {
 
 const IndexPage = () => (
   <Layout title="Paul's Soundboard">
-    <h1>Welcome to Paul's Soundboard! 👋</h1>
+    <h1 className="text-center text-2xl">Welcome to Paul's Soundboard! 👋</h1>
     {process.browser ? 
     sounds.map((sound) => {
       const btnId = sound.name + 'btn';

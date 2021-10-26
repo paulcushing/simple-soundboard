@@ -16,7 +16,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
     <header className="flex justify-center h-16">
       
     </header>
-    <div className="flex-grow mx-8 md:mx-24 xl:mx-60">
+    <div className="flex-grow mx-8 md:mx-24 xl:mx-60 justify-center">
       {children}
     </div>
     <footer className="flex justify-center h-16">
