@@ -52,7 +52,7 @@ const IndexPage = () => (
       return (
       <p key={sound.name}>
 
-        <button id={btnId} onClick={ () => playSound(sound.audio)} className="my-2 px-8 py-4 w-full rounded text-white text-xl shadow-lg bg-blue-600 focus:shadow-sm">{sound.name}</button>
+        <button role="button" id={btnId} onClick={ () => playSound(sound.audio)} className="my-2 px-8 py-4 w-full rounded text-white text-xl shadow-lg bg-blue-600 focus:shadow-sm">{sound.name}</button>
       </p>
     )})
   : null
