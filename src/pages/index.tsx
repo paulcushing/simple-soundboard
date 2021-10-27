@@ -1,4 +1,5 @@
 import Layout from '../components/Layout'
+import Image from 'next/image'
 
 const sounds = [
   {
@@ -12,15 +13,15 @@ const sounds = [
     audio : null
   },
   {
+    name : 'Power Up',
+    file : "/sounds/powerup.mp3",
+    audio : null
+  },
+  {
     name : 'Game Over',
     file : "/sounds/gameover.mp3",
     audio : null
   },
-  {
-    name : 'Power Up',
-    file : "/sounds/powerup.mp3",
-    audio : null
-  }
 ];
 
 function playSound(audio) {
@@ -33,8 +34,14 @@ function playSound(audio) {
 }
 
 const IndexPage = () => (
-  <Layout title="Paul's Simple Soundboard">
-    <h1>Welcome to Paul's Soundboard! 👋</h1>
+  <Layout title="Paul's Soundboard">
+
+    <div className="flex justify-center">
+      <div className="w-24">
+      <Image src="/android-chrome-512x512.png" alt="Speaker Icon" sizes="10vw" width={100} height={100} />
+    </div>
+    </div>
+    <h1 className="text-center text-2xl">Welcome to Paul's Soundboard! 👋</h1>
     {process.browser ? 
     sounds.map((sound) => {
       const btnId = sound.name + 'btn';
@@ -45,7 +52,7 @@ const IndexPage = () => (
       return (
       <p key={sound.name}>
 
-        <button id={btnId} onClick={ () => playSound(sound.audio)} className="my-2 px-8 py-4 w-full rounded text-white text-xl shadow-lg bg-blue-600 focus:shadow-sm">{sound.name}</button>
+        <button role="button" id={btnId} onClick={ () => playSound(sound.audio)} className="my-2 px-8 py-4 w-full rounded text-white text-xl shadow-lg bg-blue-600 focus:shadow-sm">{sound.name}</button>
       </p>
     )})
   : null

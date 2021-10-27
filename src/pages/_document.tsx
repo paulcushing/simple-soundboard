@@ -13,7 +13,7 @@ class MyDocument extends Document {
         <Head>
             
         </Head>
-        <body>
+        <body className="font-sans">
           <Main />
           <NextScript />
         </body>
