@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Paul's Soundboard</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            const sounds = [
+                {
+                    name : 'Coin',
+                    file : "/sounds/coin.mp3",
+                    audio : null
+                },
+                {
+                    name : '1 Up',
+                    file : "/sounds/1up.mp3",
+                    audio : null
+                },
+                {
+                    name : 'Power Up',
+                    file : "/sounds/powerup.mp3",
+                    audio : null
+                },
+                {
+                    name : 'Game Over',
+                    file : "/sounds/gameover.mp3",
+                    audio : null
+                },
+            ];
+
+            window.onload = () => {
+                sounds.map((sound) => {
+                    const btnId = sound.name + 'btn';
+                    sound.audio = typeof Audio !== "undefined" ? new Audio(sound.file) : undefined;
+                    sound.audio.addEventListener('ended', (event) => {
+                        document.getElementById(btnId).blur();
+                    })
+
+                    const p = document.createElement('p');
+                    const btn = document.createElement('button');
+                    p.key = sound.name;
+                    btn.id = btnId;
+                    btn.role = "button";
+                    btn.innerHTML = sound.name;
+                    btn.className = "my-2 px-8 py-4 w-full rounded text-white text-xl shadow-lg bg-blue-600 focus:shadow-sm";
+                    btn.addEventListener('click', () => playSound(sound.audio));
+                    p.appendChild(btn);
+                    document.querySelector('#sound-buttons').appendChild(p);
+                })
+            }
+    
+            function playSound(audio) {
+                sounds.forEach((sound) => {
+                    sound.audio.pause();
+                    sound.audio.currentTime = 0;
+                })
+
+                audio.play();
+            }
+        </script>
+    </head>
+    <body>
+        <div class="flex flex-col h-screen px-8">
+            <main class="flex-grow mx-auto w-full justify-center max-w-4xl">
+                <div class="flex justify-center">
+                    <div class="w-24">
+                    <img src="/android-chrome-512x512.png" alt="Speaker Icon" width="100" height="100" />
+                    </div>
+                </div>
+                <h1 class="text-center text-2xl">Welcome to Paul's Soundboard! 👋</h1>
+                
+                <div id="sound-buttons"></div>
+            </main>
+            <footer class="flex justify-center h-16">
+                <span>By <a href="https://www.thepaulcushing.com">Paul Cushing</a></span>
+            </footer>
+        </div>
+    </body>
+</html>
